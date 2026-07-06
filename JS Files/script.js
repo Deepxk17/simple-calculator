@@ -11,3 +11,14 @@ function calculate() {
         document.getElementById('display').value = 'Error';
     }
 }
+// Keyboard support
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    
+    if (!isNaN(key) || key === '.') appendToDisplay(key);
+    if (key === '+' || key === '-' || key === '%' || key === '/') appendToDisplay(key);
+    if (key === '*') appendToDisplay('×');
+    if (key === 'Enter' || key === '=') calculate();
+    if (key === 'Backspace') deleteLast();
+    if (key === 'Escape') clearDisplay();
+});
